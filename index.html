@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -103,35 +103,33 @@ body{
     box-shadow:0 0 30px rgba(255,50,50,0.5);
 }
 
-input{
+#order input, #order button{
     width:100%;
     padding:12px;
     margin-bottom:15px;
     border:none;
     border-radius:10px;
-    background:rgba(255,255,255,0.15);
-    color:white;
     font-size:14px;
 }
 
-input::placeholder{
+#order input{
+    background:rgba(255,255,255,0.15);
+    color:white;
+}
+
+#order input::placeholder{
     color:#ccc;
 }
 
-button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:14px;
+#order button{
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
-    font-size:16px;
     font-weight:bold;
     cursor:pointer;
     color:black;
     transition:0.3s;
 }
 
-button:hover{
+#order button:hover{
     transform:scale(1.05);
     box-shadow:0 0 20px orange;
 }
@@ -146,6 +144,41 @@ button:hover{
 #contact span{
     color:#00ffd5;
     font-weight:bold;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media only screen and (max-width: 768px) {
+    #main{
+        flex-direction: column;
+        gap:20px;
+        padding:20px;
+    }
+
+    #product{
+        width:80%;
+    }
+
+    #order{
+        width:90%;
+        padding:20px;
+    }
+
+    #brand{
+        font-size:32px;
+    }
+
+    #tagline{
+        font-size:16px;
+    }
+
+    #price{
+        font-size:20px;
+    }
+
+    #order input, #order button{
+        padding:10px;
+        font-size:14px;
+    }
 }
 </style>
 </head>
@@ -175,12 +208,10 @@ button:hover{
 
     <!-- ORDER FORM -->
     <div id="order">
-        <form action="https://formsubmit.co/tappu707@gmail.com" method="POST" onsubmit="return orderNow();">
-            <input type="text" name="name" id="name" placeholder="Your Name" required>
-            <input type="text" name="phone" id="phone" placeholder="Phone / WhatsApp" required>
-            <input type="number" name="qty" id="qty" placeholder="Quantity" required>
-            <!-- optional: redirect after submit -->
-            <input type="hidden" name="_next" value="https://tappu7071770-sketch.github.io/Turkish.-Energy/">
+        <form action="https://formsubmit.co/tappu707@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
+            <input type="number" name="qty" placeholder="Quantity" required>
             <button type="submit">ORDER NOW</button>
         </form>
     </div>
@@ -192,28 +223,5 @@ button:hover{
     📞 Order & Info: <span>0300-5093328</span>
 </div>
 
-<script>
-function orderNow(){
-    let n = document.getElementById("name").value;
-    let p = document.getElementById("phone").value;
-    let q = document.getElementById("qty").value;
-
-    if(n=="" || p=="" || q==""){
-        alert("Please fill all fields!");
-        return false; // stop submission
-    } else {
-        alert(
-            "⚡ Turkish Energy Order Confirmed!\n\n"+
-            "Name: "+n+"\n"+
-            "Phone: "+p+"\n"+
-            "Quantity: "+q+" Can(s)\n\n"+
-            "Your order will be sent to our email!"
-        );
-        return true; // allow form submission
-    }
-}
-</script>
-
 </body>
 </html>
-
