@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -175,10 +175,14 @@ button:hover{
 
     <!-- ORDER FORM -->
     <div id="order">
-        <input id="name" type="text" placeholder="Your Name">
-        <input id="phone" type="text" placeholder="Phone / WhatsApp">
-        <input id="qty" type="number" placeholder="Quantity">
-        <button onclick="orderNow()">ORDER NOW</button>
+        <form action="https://formsubmit.co/tappu707@gmail.com" method="POST" onsubmit="return orderNow();">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="text" name="phone" id="phone" placeholder="Phone / WhatsApp" required>
+            <input type="number" name="qty" id="qty" placeholder="Quantity" required>
+            <!-- optional: redirect after submit -->
+            <input type="hidden" name="_next" value="https://tappu7071770-sketch.github.io/Turkish.-Energy/">
+            <button type="submit">ORDER NOW</button>
+        </form>
     </div>
 
 </div>
@@ -196,13 +200,16 @@ function orderNow(){
 
     if(n=="" || p=="" || q==""){
         alert("Please fill all fields!");
-    }else{
+        return false; // stop submission
+    } else {
         alert(
             "⚡ Turkish Energy Order Confirmed!\n\n"+
             "Name: "+n+"\n"+
             "Phone: "+p+"\n"+
-            "Quantity: "+q+" Can(s)"
+            "Quantity: "+q+" Can(s)\n\n"+
+            "Your order will be sent to our email!"
         );
+        return true; // allow form submission
     }
 }
 </script>
