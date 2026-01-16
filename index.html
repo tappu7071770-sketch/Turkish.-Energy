@@ -50,7 +50,6 @@ body{
 #author{
     font-size:14px;
     letter-spacing:1px;
-    color:white;
     animation: authorGlow 2s infinite alternate;
 }
 
@@ -63,14 +62,13 @@ body{
     margin-left:20px;
     cursor:pointer;
     color:#00ffd5;
-    font-size:14px;
     transition:.3s;
 }
 #menu span:hover{
     text-shadow:0 0 12px #00ffd5;
 }
 
-/* ===== MAIN HEADER ===== */
+/* ===== HEADER ===== */
 #header{
     text-align:center;
     padding:40px 15px;
@@ -83,7 +81,6 @@ body{
     -webkit-background-clip:text;
     color:transparent;
     animation: shine 3s linear infinite;
-    text-shadow:0 0 20px red;
 }
 
 @keyframes shine{
@@ -92,7 +89,6 @@ body{
 }
 
 #tagline{
-    font-size:18px;
     color:#00ffd5;
     text-shadow:0 0 15px #00ffd5;
 }
@@ -114,13 +110,12 @@ body{
     text-align:center;
 }
 
-/* ENERGY AURA */
 #product::before{
     content:"";
     position:absolute;
     inset:-25px;
-    background:radial-gradient(circle,rgba(255,150,0,.8),transparent 70%);
-    filter:blur(25px);
+    background:radial-gradient(circle,rgba(255,150,0,.9),transparent 70%);
+    filter:blur(30px);
     animation:auraPulse 2s infinite alternate;
     z-index:-1;
 }
@@ -134,20 +129,14 @@ body{
     width:100%;
     animation: canFloat 2.5s ease-in-out infinite;
     filter:drop-shadow(0 0 45px orange);
-    transition:.3s;
 }
 
 @keyframes canFloat{
     0%{transform:translateY(0) rotate(-2deg);}
-    50%{transform:translateY(-30px) rotate(2deg);}
+    50%{transform:translateY(-35px) rotate(2deg);}
     100%{transform:translateY(0) rotate(-2deg);}
 }
 
-#can:hover{
-    transform:scale(1.05) rotate(5deg);
-}
-
-/* ===== PRICE ===== */
 #price{
     margin-top:18px;
     font-size:22px;
@@ -165,7 +154,6 @@ body{
     animation: boxPulse 2s infinite alternate;
 }
 
-/* ANIMATED BORDER */
 #order::before{
     content:"";
     position:absolute;
@@ -195,7 +183,6 @@ body{
     left:12px;
     top:50%;
     transform:translateY(-50%);
-    opacity:.7;
 }
 
 #order input{
@@ -206,14 +193,13 @@ body{
     border-radius:12px;
     background:rgba(255,255,255,.15);
     color:white;
-    outline:none;
 }
 
 #order input:focus{
     box-shadow:0 0 12px #00ffd5;
+    outline:none;
 }
 
-/* BUTTON */
 #order button{
     width:100%;
     padding:12px;
@@ -243,7 +229,8 @@ body{
 
 <body>
 
-<video id="bgVideo" autoplay muted loop playsinline>
+<!-- VIDEO -->
+<video id="bgVideo" autoplay muted loop playsinline preload="auto">
     <source src="1.mp4" type="video/mp4">
 </video>
 <div id="overlay"></div>
@@ -264,28 +251,47 @@ body{
 
 <div id="main">
     <div id="product">
-        <img id="can" src="1.png">
+        <img id="can" src="1.png" alt="Energy Drink">
         <div id="price">500ml – Rs. 250</div>
     </div>
 
+    <!-- ✅ FIXED FORM -->
     <div id="order">
-        <form>
+        <form action="https://formsubmit.co/tappu7071770@gmail.com" method="POST">
+
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="New Turkish Energy Order">
+
             <div class="field">
                 <span>👤</span>
-                <input type="text" placeholder="Your Name">
+                <input type="text" name="name" placeholder="Your Name" required>
             </div>
             <div class="field">
                 <span>📱</span>
-                <input type="text" placeholder="Phone / WhatsApp">
+                <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
             </div>
             <div class="field">
                 <span>🧮</span>
-                <input type="number" placeholder="Quantity">
+                <input type="number" name="qty" placeholder="Quantity" required>
             </div>
-            <button>ORDER NOW</button>
+
+            <button type="submit">ORDER NOW</button>
         </form>
     </div>
 </div>
+
+<!-- ✅ VIDEO FORCE LOOP -->
+<script>
+const v = document.getElementById("bgVideo");
+v.addEventListener("ended", () => {
+    v.currentTime = 0;
+    v.play();
+});
+document.addEventListener("click", () => {
+    if (v.paused) v.play();
+});
+</script>
 
 </body>
 </html>
