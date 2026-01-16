@@ -5,6 +5,9 @@
 <title>Turkish Energy | Fizzy Like Soda Storm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 *{
     margin:0;
@@ -33,7 +36,7 @@ body{
 #overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.6);
+    background:rgba(0,0,0,0.55);
     z-index:-4;
 }
 
@@ -43,8 +46,8 @@ body{
     justify-content:space-between;
     align-items:center;
     padding:12px 22px;
-    background:rgba(0,0,0,0.45);
-    backdrop-filter:blur(8px);
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
 }
 
 #author{
@@ -54,18 +57,24 @@ body{
 }
 
 @keyframes authorGlow{
-    from{text-shadow:0 0 5px red;}
-    to{text-shadow:0 0 15px red,0 0 30px orange;}
+    from{text-shadow:0 0 6px red;}
+    to{text-shadow:0 0 18px red,0 0 35px orange;}
 }
 
 #menu span{
     margin-left:20px;
     cursor:pointer;
     color:#00ffd5;
+    font-size:14px;
     transition:.3s;
 }
+
+#menu span i{
+    margin-right:6px;
+}
+
 #menu span:hover{
-    text-shadow:0 0 12px #00ffd5;
+    text-shadow:0 0 15px #00ffd5;
 }
 
 /* ===== HEADER ===== */
@@ -89,6 +98,7 @@ body{
 }
 
 #tagline{
+    font-size:18px;
     color:#00ffd5;
     text-shadow:0 0 15px #00ffd5;
 }
@@ -103,7 +113,7 @@ body{
     padding:40px 20px;
 }
 
-/* ===== CAN ===== */
+/* ===== PRODUCT ===== */
 #product{
     position:relative;
     width:260px;
@@ -113,8 +123,8 @@ body{
 #product::before{
     content:"";
     position:absolute;
-    inset:-25px;
-    background:radial-gradient(circle,rgba(255,150,0,.9),transparent 70%);
+    inset:-28px;
+    background:radial-gradient(circle,rgba(255,170,0,.9),transparent 70%);
     filter:blur(30px);
     animation:auraPulse 2s infinite alternate;
     z-index:-1;
@@ -127,8 +137,8 @@ body{
 
 #can{
     width:100%;
-    animation: canFloat 2.5s ease-in-out infinite;
-    filter:drop-shadow(0 0 45px orange);
+    animation: canFloat 2.6s ease-in-out infinite;
+    filter:drop-shadow(0 0 50px orange);
 }
 
 @keyframes canFloat{
@@ -144,14 +154,14 @@ body{
     text-shadow:0 0 15px orange;
 }
 
-/* ===== FORM ===== */
+/* ===== ORDER FORM ===== */
 #order{
     width:300px;
     padding:26px;
     border-radius:22px;
     background:rgba(0,0,0,.65);
     position:relative;
-    animation: boxPulse 2s infinite alternate;
+    animation: boxPulse 2.2s infinite alternate;
 }
 
 #order::before{
@@ -159,7 +169,7 @@ body{
     position:absolute;
     inset:-2px;
     border-radius:24px;
-    background:linear-gradient(90deg,red,orange,red);
+    background:linear-gradient(90deg,#ff2a2a,#ffaa00,#ff2a2a);
     z-index:-1;
     animation:borderMove 3s linear infinite;
 }
@@ -170,50 +180,52 @@ body{
 }
 
 @keyframes boxPulse{
-    from{box-shadow:0 0 20px red;}
-    to{box-shadow:0 0 45px orange;}
+    from{box-shadow:0 0 20px rgba(255,80,80,.6);}
+    to{box-shadow:0 0 45px rgba(255,160,80,1);}
 }
 
 .field{
     position:relative;
 }
 
-.field span{
+.field i{
     position:absolute;
     left:12px;
     top:50%;
     transform:translateY(-50%);
+    color:#00ffd5;
 }
 
 #order input{
     width:100%;
-    padding:12px 12px 12px 36px;
+    padding:12px 12px 12px 38px;
     margin-bottom:15px;
     border:none;
     border-radius:12px;
     background:rgba(255,255,255,.15);
     color:white;
-}
-
-#order input:focus{
-    box-shadow:0 0 12px #00ffd5;
     outline:none;
 }
 
+#order input:focus{
+    box-shadow:0 0 14px #00ffd5;
+}
+
+/* BUTTON */
 #order button{
     width:100%;
-    padding:12px;
+    padding:13px;
     border:none;
-    border-radius:14px;
+    border-radius:16px;
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
     font-weight:bold;
     cursor:pointer;
-    animation: btnGlow 1.5s infinite alternate;
+    animation: btnGlow 1.6s infinite alternate;
 }
 
 @keyframes btnGlow{
-    from{box-shadow:0 0 10px orange;}
-    to{box-shadow:0 0 30px orange;}
+    from{box-shadow:0 0 12px orange;}
+    to{box-shadow:0 0 32px orange;}
 }
 
 #order button:hover{
@@ -235,62 +247,67 @@ body{
 </video>
 <div id="overlay"></div>
 
+<!-- TOP HEADER -->
 <div id="topHeader">
     <div id="author">by Roman Habib</div>
     <div id="menu">
-        <span>Contacts</span>
-        <span>Support</span>
-        <span>Complaint</span>
+        <span><i class="fa-solid fa-phone"></i>Contacts</span>
+        <span><i class="fa-solid fa-headset"></i>Support</span>
+        <span><i class="fa-solid fa-triangle-exclamation"></i>Complaint</span>
     </div>
 </div>
 
+<!-- MAIN HEADER -->
 <div id="header">
     <div id="brand">TURKISH ENERGY</div>
     <div id="tagline">Fizzy Like Soda Storm ⚡</div>
 </div>
 
+<!-- MAIN -->
 <div id="main">
     <div id="product">
         <img id="can" src="1.png" alt="Energy Drink">
         <div id="price">500ml – Rs. 250</div>
     </div>
 
-    <!-- ✅ FIXED FORM -->
     <div id="order">
         <form action="https://formsubmit.co/tappu7071770@gmail.com" method="POST">
-
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_subject" value="New Turkish Energy Order">
 
             <div class="field">
-                <span>👤</span>
+                <i class="fa-solid fa-user"></i>
                 <input type="text" name="name" placeholder="Your Name" required>
             </div>
+
             <div class="field">
-                <span>📱</span>
+                <i class="fa-solid fa-phone"></i>
                 <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
             </div>
+
             <div class="field">
-                <span>🧮</span>
+                <i class="fa-solid fa-cart-shopping"></i>
                 <input type="number" name="qty" placeholder="Quantity" required>
             </div>
 
-            <button type="submit">ORDER NOW</button>
+            <button type="submit">
+                <i class="fa-solid fa-bolt"></i> ORDER NOW
+            </button>
         </form>
     </div>
 </div>
 
-<!-- ✅ VIDEO FORCE LOOP -->
+<!-- FORCE VIDEO LOOP -->
 <script>
 const v = document.getElementById("bgVideo");
-v.addEventListener("ended", () => {
-    v.currentTime = 0;
+v.addEventListener("ended",()=>{
+    v.currentTime=0;
     v.play();
 });
-document.addEventListener("click", () => {
-    if (v.paused) v.play();
-});
+document.addEventListener("touchstart",()=>{
+    if(v.paused) v.play();
+},{once:true});
 </script>
 
 </body>
