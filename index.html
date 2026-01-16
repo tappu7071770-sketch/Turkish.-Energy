@@ -11,15 +11,7 @@
     padding:0;
     box-sizing:border-box;
     font-family: Impact, Arial Black, sans-serif;
-#bgVideo{
-    will-change: transform;
 }
-
-
-
-
-}
-    
 
 body{
     min-height:100vh;
@@ -36,6 +28,7 @@ body{
     height:100%;
     object-fit:cover;
     z-index:-2;
+    will-change: transform;
 }
 
 #overlay{
@@ -48,10 +41,53 @@ body{
     z-index:-1;
 }
 
+/* ===== TOP BAR ===== */
+#topBar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 20px;
+    font-size:14px;
+}
+
+#author{
+    opacity:0;
+    animation: fadeIn 2s forwards;
+    color:#ccc;
+}
+
+#contactBtn{
+    cursor:pointer;
+    color:#00ffd5;
+    transition:0.3s;
+}
+
+#contactBtn:hover{
+    text-shadow:0 0 10px #00ffd5;
+}
+
+#phone{
+    display:none;
+    text-align:center;
+    font-size:16px;
+    margin-top:5px;
+    animation: slideDown 0.4s ease;
+    color:#ffaa00;
+}
+
+@keyframes fadeIn{
+    to{opacity:1;}
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-10px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
 /* ===== HEADER ===== */
 #header{
     text-align:center;
-    padding:30px 15px;
+    padding:20px 15px 30px;
 }
 
 #brand{
@@ -154,38 +190,11 @@ body{
     font-weight:bold;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
-@media only screen and (max-width: 768px) {
+/* ===== MOBILE ===== */
+@media (max-width:768px){
     #main{
-        flex-direction: column;
+        flex-direction:column;
         gap:20px;
-        padding:20px;
-    }
-
-    #product{
-        width:80%;
-    }
-
-    #order{
-        width:90%;
-        padding:20px;
-    }
-
-    #brand{
-        font-size:32px;
-    }
-
-    #tagline{
-        font-size:16px;
-    }
-
-    #price{
-        font-size:20px;
-    }
-
-    #order input, #order button{
-        padding:10px;
-        font-size:14px;
     }
 }
 </style>
@@ -193,11 +202,18 @@ body{
 
 <body>
 
-<!-- VIDEO BACKGROUND -->
-<video id="bgVideo" autoplay muted loop>
+<!-- VIDEO -->
+<video id="bgVideo" autoplay muted loop playsinline preload="auto">
     <source src="1.mp4" type="video/mp4">
 </video>
 <div id="overlay"></div>
+
+<!-- TOP BAR -->
+<div id="topBar">
+    <div id="author">by Roman Habib</div>
+    <div id="contactBtn" onclick="togglePhone()">Contacts</div>
+</div>
+<div id="phone">📞 0300-5093328</div>
 
 <!-- HEADER -->
 <div id="header">
@@ -208,13 +224,11 @@ body{
 <!-- MAIN -->
 <div id="main">
 
-    <!-- PRODUCT -->
     <div id="product">
-        <img id="can" src="1.png" alt="Turkish Energy Can">
+        <img id="can" src="1.png">
         <div id="price">500ml – Rs. 250</div>
     </div>
 
-    <!-- ORDER FORM -->
     <div id="order">
         <form action="https://formsubmit.co/tappu707@gmail.com" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
@@ -226,11 +240,16 @@ body{
 
 </div>
 
-<!-- CONTACT -->
 <div id="contact">
-    📞 Order & Info: <span>0300-5093328</span>
+    Order & Info
 </div>
+
+<script>
+function togglePhone(){
+    const phone = document.getElementById("phone");
+    phone.style.display = phone.style.display === "block" ? "none" : "block";
+}
+</script>
 
 </body>
 </html>
-
