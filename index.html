@@ -2,28 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Turkish Energy</title>
+<title>Turkish Energy | Fizzy Like Soda Storm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-:root{
-    --accent:#00ffd5;
-    --dark:rgba(0,0,0,0.7);
-}
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: Impact, Arial Black, sans-serif;
 }
 
 body{
-    color:#fff;
-    background:#000;
+    min-height:100vh;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* ===== VIDEO ===== */
+/* ===== VIDEO BACKGROUND ===== */
 #bgVideo{
     position:fixed;
     inset:0;
@@ -32,6 +28,7 @@ body{
     object-fit:cover;
     z-index:-2;
 }
+
 #overlay{
     position:fixed;
     inset:0;
@@ -39,181 +36,242 @@ body{
     z-index:-1;
 }
 
-/* ===== HEADER ===== */
-header{
-    height:56px;
+/* ===== HEADER BAR ===== */
+#topHeader{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    padding:0 18px;
-    background:rgba(0,0,0,0.6);
-    backdrop-filter:blur(10px);
+    align-items:center;
+    padding:12px 20px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(6px);
 }
 
 #author{
     font-size:13px;
-    font-weight:600;
-    opacity:.85;
+    letter-spacing:1px;
+    color:#fff;
+    font-weight:bold;
+    text-shadow:0 0 10px red;
+    animation: pulse 2.5s infinite;
 }
 
-nav{
+@keyframes pulse{
+    0%{opacity:.6}
+    50%{opacity:1}
+    100%{opacity:.6}
+}
+
+#menu{
     display:flex;
-    gap:18px;
+    gap:20px;
 }
 
-nav button{
-    background:none;
-    border:none;
-    color:var(--accent);
-    font-size:14px;
+#menu span{
     cursor:pointer;
-    padding:6px 8px;
-}
-
-/* ===== MODAL ===== */
-.modal-bg{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:50;
-}
-
-.modal{
-    width:90%;
-    max-width:420px;
-    background:#0e0e0e;
-    border-radius:14px;
-    padding:22px;
-    animation: pop .25s ease;
-}
-
-@keyframes pop{
-    from{opacity:0; transform:scale(.95);}
-    to{opacity:1; transform:scale(1);}
-}
-
-.modal h3{
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.modal p{
+    color:#00ffd5;
     font-size:14px;
+}
+
+/* ===== SLIDE PANELS ===== */
+.panel{
+    position:fixed;
+    top:65px;
+    right:20px;
+    width:300px;
+    background:rgba(0,0,0,0.85);
+    padding:18px;
+    border-radius:14px;
+    display:none;
+    z-index:10;
+    animation: slideFade .35s ease;
+}
+
+@keyframes slideFade{
+    from{opacity:0; transform:translateY(-10px)}
+    to{opacity:1; transform:translateY(0)}
+}
+
+.panel h3{
+    color:#ffaa00;
+    margin-bottom:8px;
+}
+
+.panel p{
+    font-size:14px;
+    line-height:1.5;
     color:#ccc;
-    line-height:1.6;
 }
 
 .close{
-    margin-top:18px;
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:8px;
-    background:#222;
-    color:#fff;
+    text-align:right;
     cursor:pointer;
+    font-size:18px;
 }
 
-/* ===== MAIN ===== */
-#hero{
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+    .panel{
+        width:100%;
+        left:0;
+        right:0;
+        bottom:0;
+        top:auto;
+        border-radius:18px 18px 0 0;
+        animation: slideUp .35s ease;
+    }
+    @keyframes slideUp{
+        from{transform:translateY(100%)}
+        to{transform:translateY(0)}
+    }
+}
+
+/* ===== HEADER ===== */
+#header{
     text-align:center;
-    padding:40px 16px 20px;
+    padding:30px 15px;
 }
 
 #brand{
-    font-size:36px;
-    font-weight:800;
-    letter-spacing:1px;
+    font-size:42px;
+    letter-spacing:3px;
+    color:#ff2a2a;
+    text-shadow:0 0 15px red;
 }
 
 #tagline{
-    font-size:15px;
-    color:var(--accent);
-    margin-top:6px;
+    font-size:18px;
+    color:#00ffd5;
+    margin-top:8px;
 }
 
+/* ===== MAIN ===== */
 #main{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
-    gap:36px;
+    align-items:center;
+    gap:40px;
     padding:30px;
 }
 
+/* ===== PRODUCT ===== */
 #product{
-    width:240px;
+    width:260px;
     text-align:center;
 }
 
-#product img{
+#can{
     width:100%;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px orange);
+}
+
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-18px);}
+    100%{transform:translateY(0);}
 }
 
 #price{
-    margin-top:12px;
-    font-size:18px;
+    margin-top:15px;
+    font-size:22px;
+    color:#ffaa00;
+    text-shadow:0 0 10px orange;
 }
 
+/* ===== ORDER ===== */
 #order{
     width:300px;
-    background:var(--dark);
-    padding:22px;
-    border-radius:16px;
+    background:rgba(0,0,0,0.6);
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(255,50,50,0.5);
+    animation: glowBox 2.5s infinite alternate;
 }
 
-#order input,#order button{
+@keyframes glowBox{
+    from{box-shadow:0 0 15px rgba(255,80,80,0.4);}
+    to{box-shadow:0 0 35px rgba(255,80,80,0.8);}
+}
+
+#order input, #order button{
     width:100%;
-    padding:11px;
-    margin-bottom:14px;
+    padding:12px;
+    margin-bottom:15px;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
     font-size:14px;
 }
 
 #order input{
-    background:#222;
-    color:#fff;
+    background:rgba(255,255,255,0.15);
+    color:white;
+}
+
+#order input::placeholder{
+    color:#ccc;
 }
 
 #order button{
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
-    font-weight:600;
+    font-weight:bold;
+    cursor:pointer;
+    color:black;
+    transition:.3s;
+}
+
+#order button:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px orange;
 }
 </style>
 </head>
 
 <body>
 
-<video id="bgVideo" autoplay muted loop playsinline>
+<video id="bgVideo" autoplay muted loop playsinline preload="auto">
     <source src="1.mp4" type="video/mp4">
 </video>
 <div id="overlay"></div>
 
-<header>
-    <div id="author">Roman Habib</div>
-    <nav>
-        <button onclick="openModal('contact')">Contact</button>
-        <button onclick="openModal('support')">Support</button>
-        <button onclick="openModal('complaint')">Complaint</button>
-    </nav>
-</header>
-
-<!-- MODALS -->
-<div id="modal" class="modal-bg">
-    <div class="modal" id="modalContent"></div>
+<!-- TOP HEADER -->
+<div id="topHeader">
+    <div id="author">by Roman Habib</div>
+    <div id="menu">
+        <span onclick="openPanel('contact')">Contacts</span>
+        <span onclick="openPanel('support')">Support</span>
+        <span onclick="openPanel('complaint')">Complaint</span>
+    </div>
 </div>
 
-<section id="hero">
+<!-- PANELS -->
+<div id="contact" class="panel">
+    <div class="close" onclick="closePanels()">✕</div>
+    <h3>Contacts</h3>
+    <p>📞 0300-5093328</p>
+</div>
+
+<div id="support" class="panel">
+    <div class="close" onclick="closePanels()">✕</div>
+    <h3>Support</h3>
+    <p>Order form fill karein aur submit karein. Team aapse contact karegi.</p>
+</div>
+
+<div id="complaint" class="panel">
+    <div class="close" onclick="closePanels()">✕</div>
+    <h3>Complaint</h3>
+    <p>📞 0314-5383884</p>
+</div>
+
+<!-- MAIN -->
+<div id="header">
     <div id="brand">TURKISH ENERGY</div>
-    <div id="tagline">Fizzy Like Soda Storm ⚡</div>
-</section>
+    <div id="tagline">Fizzy Like Soda Storm⚡</div>
+</div>
 
 <div id="main">
     <div id="product">
-        <img src="1.png">
+        <img id="can" src="1.png">
         <div id="price">500ml – Rs. 250</div>
     </div>
 
@@ -228,31 +286,12 @@ nav button{
 </div>
 
 <script>
-const modal = document.getElementById("modal");
-const content = document.getElementById("modalContent");
-
-function openModal(type){
-    let html="";
-    if(type==="contact"){
-        html=`<h3>Contact</h3>
-              <p>Orders & information</p>
-              <p>📞 0300-5093328</p>`;
-    }
-    if(type==="support"){
-        html=`<h3>Support</h3>
-              <p>Select product → Fill form → Submit → Our team will contact you.</p>`;
-    }
-    if(type==="complaint"){
-        html=`<h3>Complaint</h3>
-              <p>For complaints please call:</p>
-              <p>📞 0314-5383884</p>`;
-    }
-    content.innerHTML = html + `<button class="close" onclick="closeModal()">Close</button>`;
-    modal.style.display="flex";
+function openPanel(id){
+    document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
+    document.getElementById(id).style.display='block';
 }
-
-function closeModal(){
-    modal.style.display="none";
+function closePanels(){
+    document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
 }
 </script>
 
