@@ -5,310 +5,197 @@
 <title>Turkish Energy | Fizzy Like Soda Storm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONT AWESOME -->
+<!-- GOOGLE ADSENSE -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3750032345755031"
+     crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Impact, Arial Black, sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
-    min-height:100vh;
-    color:white;
+    font-family:Arial, sans-serif;
     background:black;
-    overflow-x:hidden;
+    color:white;
 }
-
-/* ===== VIDEO ===== */
 #bgVideo{
     position:fixed;
     inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
-    z-index:-5;
+    z-index:-2;
 }
-
 #overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.55);
-    z-index:-4;
+    background:rgba(0,0,0,0.6);
+    z-index:-1;
 }
-
-/* ===== TOP HEADER ===== */
-#topHeader{
+header{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    padding:12px 22px;
-    background:rgba(0,0,0,0.5);
-    backdrop-filter:blur(10px);
+    padding:15px 25px;
+    background:rgba(0,0,0,0.6);
 }
-
-#author{
-    font-size:14px;
-    letter-spacing:1px;
-    animation: authorGlow 2s infinite alternate;
-}
-
-@keyframes authorGlow{
-    from{text-shadow:0 0 6px red;}
-    to{text-shadow:0 0 18px red,0 0 35px orange;}
-}
-
-#menu span{
-    margin-left:20px;
-    cursor:pointer;
+header a{
     color:#00ffd5;
+    margin-left:18px;
+    text-decoration:none;
     font-size:14px;
-    transition:.3s;
 }
-
-#menu span i{
-    margin-right:6px;
-}
-
-#menu span:hover{
-    text-shadow:0 0 15px #00ffd5;
-}
-
-/* ===== HEADER ===== */
-#header{
+#hero{
     text-align:center;
-    padding:40px 15px;
+    padding:50px 20px;
 }
-
-#brand{
+#hero h1{
     font-size:46px;
-    letter-spacing:4px;
-    background:linear-gradient(90deg,#ff2a2a,#ffaa00,#ff2a2a);
+    background:linear-gradient(90deg,#ff2a2a,#ffaa00);
     -webkit-background-clip:text;
     color:transparent;
-    animation: shine 3s linear infinite;
 }
-
-@keyframes shine{
-    from{background-position:0%}
-    to{background-position:200%}
-}
-
-#tagline{
-    font-size:18px;
+#hero p{
     color:#00ffd5;
-    text-shadow:0 0 15px #00ffd5;
+    margin-top:10px;
 }
-
-/* ===== MAIN ===== */
 #main{
     display:flex;
     justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
     gap:60px;
+    flex-wrap:wrap;
     padding:40px 20px;
 }
-
-/* ===== PRODUCT ===== */
 #product{
-    position:relative;
     width:260px;
     text-align:center;
 }
-
-#product::before{
-    content:"";
-    position:absolute;
-    inset:-28px;
-    background:radial-gradient(circle,rgba(255,170,0,.9),transparent 70%);
-    filter:blur(30px);
-    animation:auraPulse 2s infinite alternate;
-    z-index:-1;
-}
-
-@keyframes auraPulse{
-    from{opacity:.4}
-    to{opacity:1}
-}
-
-#can{
+#product img{
     width:100%;
-    animation: canFloat 2.6s ease-in-out infinite;
-    filter:drop-shadow(0 0 50px orange);
 }
-
-@keyframes canFloat{
-    0%{transform:translateY(0) rotate(-2deg);}
-    50%{transform:translateY(-35px) rotate(2deg);}
-    100%{transform:translateY(0) rotate(-2deg);}
-}
-
 #price{
-    margin-top:18px;
-    font-size:22px;
+    margin-top:15px;
     color:#ffaa00;
-    text-shadow:0 0 15px orange;
+    font-size:22px;
 }
-
-/* ===== ORDER FORM ===== */
 #order{
     width:300px;
-    padding:26px;
-    border-radius:22px;
-    background:rgba(0,0,0,.65);
-    position:relative;
-    animation: boxPulse 2.2s infinite alternate;
+    padding:25px;
+    background:rgba(0,0,0,0.65);
+    border-radius:20px;
 }
-
-#order::before{
-    content:"";
-    position:absolute;
-    inset:-2px;
-    border-radius:24px;
-    background:linear-gradient(90deg,#ff2a2a,#ffaa00,#ff2a2a);
-    z-index:-1;
-    animation:borderMove 3s linear infinite;
-}
-
-@keyframes borderMove{
-    from{background-position:0%}
-    to{background-position:200%}
-}
-
-@keyframes boxPulse{
-    from{box-shadow:0 0 20px rgba(255,80,80,.6);}
-    to{box-shadow:0 0 45px rgba(255,160,80,1);}
-}
-
-.field{
-    position:relative;
-}
-
-.field i{
-    position:absolute;
-    left:12px;
-    top:50%;
-    transform:translateY(-50%);
-    color:#00ffd5;
-}
-
-#order input{
+#order input,#order button{
     width:100%;
-    padding:12px 12px 12px 38px;
+    padding:12px;
     margin-bottom:15px;
     border:none;
     border-radius:12px;
-    background:rgba(255,255,255,.15);
-    color:white;
-    outline:none;
 }
-
-#order input:focus{
-    box-shadow:0 0 14px #00ffd5;
-}
-
-/* BUTTON */
 #order button{
-    width:100%;
-    padding:13px;
-    border:none;
-    border-radius:16px;
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
     font-weight:bold;
     cursor:pointer;
-    animation: btnGlow 1.6s infinite alternate;
 }
-
-@keyframes btnGlow{
-    from{box-shadow:0 0 12px orange;}
-    to{box-shadow:0 0 32px orange;}
+section{
+    max-width:900px;
+    margin:50px auto;
+    padding:25px;
+    background:rgba(0,0,0,0.65);
+    border-radius:20px;
+    line-height:1.7;
 }
-
-#order button:hover{
-    transform:scale(1.08);
-}
-
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-    #main{gap:35px;}
+footer{
+    text-align:center;
+    padding:20px;
+    font-size:13px;
+    opacity:0.8;
 }
 </style>
 </head>
 
 <body>
 
-<!-- VIDEO -->
-<video id="bgVideo" autoplay muted loop playsinline preload="auto">
+<video id="bgVideo" autoplay muted loop playsinline>
     <source src="1.mp4" type="video/mp4">
 </video>
 <div id="overlay"></div>
 
-<!-- TOP HEADER -->
-<div id="topHeader">
-    <div id="author">by Roman Habib</div>
-    <div id="menu">
-        <span><i class="fa-solid fa-phone"></i>Contacts</span>
-        <span><i class="fa-solid fa-headset"></i>Support</span>
-        <span><i class="fa-solid fa-triangle-exclamation"></i>Complaint</span>
-    </div>
+<header>
+    <div>© Turkish Energy</div>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy">Privacy</a>
+    </nav>
+</header>
+
+<div id="hero">
+    <h1>TURKISH ENERGY</h1>
+    <p>Fizzy Like Soda Storm ⚡</p>
 </div>
 
-<!-- MAIN HEADER -->
-<div id="header">
-    <div id="brand">TURKISH ENERGY</div>
-    <div id="tagline">Fizzy Like Soda Storm ⚡</div>
-</div>
-
-<!-- MAIN -->
 <div id="main">
     <div id="product">
-        <img id="can" src="1.png" alt="Energy Drink">
+        <img src="1.png" alt="Energy Drink">
         <div id="price">500ml – Rs. 250</div>
     </div>
 
     <div id="order">
         <form action="https://formsubmit.co/tappu7071770@gmail.com" method="POST">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_subject" value="New Turkish Energy Order">
-
-            <div class="field">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" name="name" placeholder="Your Name" required>
-            </div>
-
-            <div class="field">
-                <i class="fa-solid fa-phone"></i>
-                <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
-            </div>
-
-            <div class="field">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <input type="number" name="qty" placeholder="Quantity" required>
-            </div>
-
-            <button type="submit">
-                <i class="fa-solid fa-bolt"></i> ORDER NOW
-            </button>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
+            <input type="number" name="qty" placeholder="Quantity" required>
+            <button type="submit">ORDER NOW</button>
         </form>
     </div>
 </div>
 
-<!-- FORCE VIDEO LOOP -->
-<script>
-const v = document.getElementById("bgVideo");
-v.addEventListener("ended",()=>{
-    v.currentTime=0;
-    v.play();
-});
-document.addEventListener("touchstart",()=>{
-    if(v.paused) v.play();
-},{once:true});
-</script>
+<!-- ABOUT -->
+<section id="about">
+<h2>About Us</h2>
+<p>
+Turkish Energy is a demo energy drink website created for learning, design practice,
+and front-end development demonstration purposes. This website showcases a sample
+product layout, animations, and form handling.
+</p>
+<p>
+This is not an official commercial beverage website. All brand names, pricing,
+and visuals are used for demonstration only.
+</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact Us</h2>
+<p>
+If you have any questions or inquiries regarding this demo project, you can contact us at:
+</p>
+<p>
+<b>Email:</b> tappu7071770@gmail.com
+</p>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy">
+<h2>Privacy Policy</h2>
+<p>
+This website respects user privacy. We do not collect sensitive personal information.
+Any information submitted through the contact or order form (such as name or phone number)
+is used solely for communication purposes.
+</p>
+<p>
+We do not sell, trade, or share user information with third parties.
+This site may display advertisements served by Google AdSense, which may use cookies
+to show relevant ads based on user interests.
+</p>
+<p>
+By using this website, you agree to this privacy policy.
+</p>
+</section>
+
+<footer>
+© 2026 Turkish Energy. All rights reserved.
+</footer>
 
 </body>
 </html>
