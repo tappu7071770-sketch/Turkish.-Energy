@@ -16,25 +16,25 @@
 body{
     min-height:100vh;
     color:white;
-    overflow-x:hidden;
     background:black;
+    overflow-x:hidden;
 }
 
-/* ===== VIDEO BACKGROUND ===== */
+/* ===== VIDEO ===== */
 #bgVideo{
     position:fixed;
     inset:0;
     width:100%;
     height:100%;
     object-fit:cover;
-    z-index:-3;
+    z-index:-5;
 }
 
 #overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.65);
-    z-index:-2;
+    background:rgba(0,0,0,0.6);
+    z-index:-4;
 }
 
 /* ===== TOP HEADER ===== */
@@ -43,104 +43,111 @@ body{
     justify-content:space-between;
     align-items:center;
     padding:12px 22px;
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.45);
     backdrop-filter:blur(8px);
 }
 
 #author{
-    font-size:13px;
+    font-size:14px;
     letter-spacing:1px;
-    color:#fff;
-    font-weight:bold;
-    animation: neonPulse 2s infinite alternate;
+    color:white;
+    animation: authorGlow 2s infinite alternate;
 }
 
-@keyframes neonPulse{
-    from{text-shadow:0 0 6px red;}
-    to{text-shadow:0 0 16px red,0 0 30px orange;}
+@keyframes authorGlow{
+    from{text-shadow:0 0 5px red;}
+    to{text-shadow:0 0 15px red,0 0 30px orange;}
 }
 
 #menu span{
-    margin-left:18px;
+    margin-left:20px;
     cursor:pointer;
     color:#00ffd5;
     font-size:14px;
+    transition:.3s;
 }
-
-/* ===== PANELS ===== */
-.panel{
-    position:fixed;
-    top:70px;
-    right:20px;
-    width:300px;
-    background:rgba(0,0,0,0.9);
-    padding:20px;
-    border-radius:16px;
-    display:none;
-    z-index:20;
-    animation: panelIn .4s ease;
-    box-shadow:0 0 25px red;
-}
-
-@keyframes panelIn{
-    from{opacity:0; transform:translateY(-15px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-.close{
-    text-align:right;
-    cursor:pointer;
-    font-size:18px;
+#menu span:hover{
+    text-shadow:0 0 12px #00ffd5;
 }
 
 /* ===== MAIN HEADER ===== */
 #header{
     text-align:center;
-    padding:35px 15px;
+    padding:40px 15px;
 }
 
 #brand{
-    font-size:44px;
-    letter-spacing:3px;
-    color:#ff2a2a;
-    text-shadow:0 0 20px red,0 0 40px orange;
+    font-size:46px;
+    letter-spacing:4px;
+    background:linear-gradient(90deg,#ff2a2a,#ffaa00,#ff2a2a);
+    -webkit-background-clip:text;
+    color:transparent;
+    animation: shine 3s linear infinite;
+    text-shadow:0 0 20px red;
+}
+
+@keyframes shine{
+    from{background-position:0%}
+    to{background-position:200%}
 }
 
 #tagline{
     font-size:18px;
     color:#00ffd5;
-    margin-top:8px;
+    text-shadow:0 0 15px #00ffd5;
 }
 
 /* ===== MAIN ===== */
 #main{
     display:flex;
-    flex-wrap:wrap;
     justify-content:center;
     align-items:center;
-    gap:50px;
+    flex-wrap:wrap;
+    gap:60px;
     padding:40px 20px;
 }
 
-/* ===== PRODUCT ===== */
+/* ===== CAN ===== */
 #product{
+    position:relative;
     width:260px;
     text-align:center;
 }
 
+/* ENERGY AURA */
+#product::before{
+    content:"";
+    position:absolute;
+    inset:-25px;
+    background:radial-gradient(circle,rgba(255,150,0,.8),transparent 70%);
+    filter:blur(25px);
+    animation:auraPulse 2s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes auraPulse{
+    from{opacity:.4}
+    to{opacity:1}
+}
+
 #can{
     width:100%;
-    animation: megaFloat 2.8s ease-in-out infinite;
-    filter: drop-shadow(0 0 40px orange);
-    will-change: transform;
+    animation: canFloat 2.5s ease-in-out infinite;
+    filter:drop-shadow(0 0 45px orange);
+    transition:.3s;
 }
 
-@keyframes megaFloat{
-    0%{transform:translateY(0) rotate(-1deg);}
-    50%{transform:translateY(-25px) rotate(1deg);}
-    100%{transform:translateY(0) rotate(-1deg);}
+@keyframes canFloat{
+    0%{transform:translateY(0) rotate(-2deg);}
+    50%{transform:translateY(-30px) rotate(2deg);}
+    100%{transform:translateY(0) rotate(-2deg);}
 }
 
+#can:hover{
+    transform:scale(1.05) rotate(5deg);
+}
+
+/* ===== PRICE ===== */
 #price{
     margin-top:18px;
     font-size:22px;
@@ -148,34 +155,56 @@ body{
     text-shadow:0 0 15px orange;
 }
 
-/* ===== ORDER FORM ===== */
+/* ===== FORM ===== */
 #order{
     width:300px;
-    background:rgba(0,0,0,0.65);
     padding:26px;
     border-radius:22px;
-    animation: boxBreath 2.2s infinite alternate;
-    border:2px solid rgba(255,60,60,0.6);
+    background:rgba(0,0,0,.65);
+    position:relative;
+    animation: boxPulse 2s infinite alternate;
 }
 
-@keyframes boxBreath{
-    from{
-        box-shadow:0 0 20px rgba(255,50,50,0.4),
-                   inset 0 0 10px rgba(255,50,50,0.3);
-    }
-    to{
-        box-shadow:0 0 45px rgba(255,50,50,0.9),
-                   inset 0 0 20px rgba(255,120,50,0.6);
-    }
+/* ANIMATED BORDER */
+#order::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:24px;
+    background:linear-gradient(90deg,red,orange,red);
+    z-index:-1;
+    animation:borderMove 3s linear infinite;
+}
+
+@keyframes borderMove{
+    from{background-position:0%}
+    to{background-position:200%}
+}
+
+@keyframes boxPulse{
+    from{box-shadow:0 0 20px red;}
+    to{box-shadow:0 0 45px orange;}
+}
+
+.field{
+    position:relative;
+}
+
+.field span{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    opacity:.7;
 }
 
 #order input{
     width:100%;
-    padding:12px;
+    padding:12px 12px 12px 36px;
     margin-bottom:15px;
     border:none;
-    border-radius:10px;
-    background:rgba(255,255,255,0.15);
+    border-radius:12px;
+    background:rgba(255,255,255,.15);
     color:white;
     outline:none;
 }
@@ -184,37 +213,30 @@ body{
     box-shadow:0 0 12px #00ffd5;
 }
 
+/* BUTTON */
 #order button{
     width:100%;
     padding:12px;
     border:none;
-    border-radius:12px;
+    border-radius:14px;
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
     font-weight:bold;
     cursor:pointer;
-    animation: btnPulse 1.5s infinite alternate;
+    animation: btnGlow 1.5s infinite alternate;
 }
 
-@keyframes btnPulse{
+@keyframes btnGlow{
     from{box-shadow:0 0 10px orange;}
-    to{box-shadow:0 0 25px orange;}
+    to{box-shadow:0 0 30px orange;}
 }
 
 #order button:hover{
-    transform:scale(1.07);
+    transform:scale(1.08);
 }
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-    #main{gap:30px;}
-    .panel{
-        width:100%;
-        left:0;
-        right:0;
-        bottom:0;
-        top:auto;
-        border-radius:20px 20px 0 0;
-    }
+    #main{gap:35px;}
 }
 </style>
 </head>
@@ -226,34 +248,15 @@ body{
 </video>
 <div id="overlay"></div>
 
-<!-- HEADER -->
 <div id="topHeader">
     <div id="author">by Roman Habib</div>
     <div id="menu">
-        <span onclick="openPanel('contact')">Contacts</span>
-        <span onclick="openPanel('support')">Support</span>
-        <span onclick="openPanel('complaint')">Complaint</span>
+        <span>Contacts</span>
+        <span>Support</span>
+        <span>Complaint</span>
     </div>
 </div>
 
-<!-- PANELS -->
-<div id="contact" class="panel">
-    <div class="close" onclick="closePanels()">✕</div>
-    <h3>Contacts</h3>
-    <p>📞 0300-5093328</p>
-</div>
-
-<div id="support" class="panel">
-    <div class="close" onclick="closePanels()">✕</div>
-    <p>Order form fill karein aur submit karein. Team aapse rabta karegi.</p>
-</div>
-
-<div id="complaint" class="panel">
-    <div class="close" onclick="closePanels()">✕</div>
-    <p>📞 0314-5383884</p>
-</div>
-
-<!-- MAIN -->
 <div id="header">
     <div id="brand">TURKISH ENERGY</div>
     <div id="tagline">Fizzy Like Soda Storm ⚡</div>
@@ -266,24 +269,23 @@ body{
     </div>
 
     <div id="order">
-        <form action="https://formsubmit.co/tappu707@gmail.com" method="POST">
-            <input type="text" placeholder="Your Name" required>
-            <input type="text" placeholder="Phone / WhatsApp" required>
-            <input type="number" placeholder="Quantity" required>
-            <button type="submit">ORDER NOW</button>
+        <form>
+            <div class="field">
+                <span>👤</span>
+                <input type="text" placeholder="Your Name">
+            </div>
+            <div class="field">
+                <span>📱</span>
+                <input type="text" placeholder="Phone / WhatsApp">
+            </div>
+            <div class="field">
+                <span>🧮</span>
+                <input type="number" placeholder="Quantity">
+            </div>
+            <button>ORDER NOW</button>
         </form>
     </div>
 </div>
-
-<script>
-function openPanel(id){
-    document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
-    document.getElementById(id).style.display='block';
-}
-function closePanels(){
-    document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
-}
-</script>
 
 </body>
 </html>
