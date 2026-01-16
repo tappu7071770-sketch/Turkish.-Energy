@@ -28,7 +28,6 @@ body{
     object-fit:cover;
     z-index:-2;
 }
-
 #overlay{
     position:fixed;
     inset:0;
@@ -41,36 +40,34 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:14px 24px;
+    padding:14px 20px;
     background:rgba(0,0,0,0.6);
     backdrop-filter:blur(8px);
+    position:relative;
+    z-index:50;
 }
 
 #author{
     font-size:14px;
     font-weight:bold;
     letter-spacing:1px;
-    color:#fff;
     animation: glow 2.5s infinite alternate;
 }
-
 @keyframes glow{
     from{ text-shadow:0 0 5px #ff2a2a; }
     to{ text-shadow:0 0 18px #ff9900; }
 }
 
+/* ===== DESKTOP MENU ===== */
 #menu{
     display:flex;
     gap:22px;
 }
-
 #menu span{
     cursor:pointer;
-    font-size:15px;
     color:#00ffd5;
     position:relative;
 }
-
 #menu span::after{
     content:"";
     position:absolute;
@@ -81,58 +78,60 @@ body{
     background:#00ffd5;
     transition:0.3s;
 }
+#menu span:hover::after{ width:100%; }
 
-#menu span:hover::after{
-    width:100%;
+/* ===== HAMBURGER ===== */
+#hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+#hamburger div{
+    width:26px;
+    height:3px;
+    background:#00ffd5;
+    border-radius:5px;
 }
 
 /* ===== PANELS ===== */
 .panel{
     position:fixed;
-    right:24px;
+    right:20px;
     top:70px;
     width:320px;
     background:rgba(0,0,0,0.9);
     padding:20px;
     border-radius:16px;
-    box-shadow:0 0 25px rgba(0,255,213,0.35);
     display:none;
-    z-index:20;
-    animation: fadeSlide 0.35s ease;
+    z-index:60;
+    animation: fadeIn 0.3s ease;
 }
-
-@keyframes fadeSlide{
-    from{ opacity:0; transform:translateY(-10px); }
-    to{ opacity:1; transform:translateY(0); }
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-10px);}
+    to{opacity:1; transform:translateY(0);}
 }
-
-.panel h3{
-    color:#ffaa00;
-    margin-bottom:10px;
-}
-
-.panel p{
-    font-size:14px;
-    line-height:1.5;
-    color:#ddd;
-}
-
+.panel h3{ color:#ffaa00; margin-bottom:8px; }
+.panel p{ font-size:14px; color:#ddd; line-height:1.5; }
 .close{
     text-align:right;
-    cursor:pointer;
     font-size:18px;
-    color:#fff;
+    cursor:pointer;
 }
 
-/* ===== MOBILE PANELS ===== */
+/* ===== MOBILE UX ===== */
 @media (max-width:768px){
+
+    #menu{ display:none; }
+    #hamburger{ display:flex; }
+
     .panel{
         width:100%;
         left:0;
         right:0;
         bottom:0;
         top:auto;
-        border-radius:20px 20px 0 0;
+        border-radius:22px 22px 0 0;
         animation: slideUp 0.35s ease;
     }
 
@@ -147,14 +146,12 @@ body{
     text-align:center;
     padding:30px 15px;
 }
-
 #brand{
     font-size:42px;
     letter-spacing:3px;
     color:#ff2a2a;
     text-shadow:0 0 15px red;
 }
-
 #tagline{
     font-size:18px;
     color:#00ffd5;
@@ -169,22 +166,15 @@ body{
     gap:40px;
     padding:30px;
 }
-
 #product{
     width:260px;
     text-align:center;
 }
-
 #can{
     width:100%;
     animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 30px orange);
 }
-
-@keyframes float{
-    50%{transform:translateY(-15px);}
-}
-
+@keyframes float{ 50%{ transform:translateY(-15px); } }
 #price{
     margin-top:15px;
     font-size:22px;
@@ -197,19 +187,16 @@ body{
     padding:25px;
     border-radius:20px;
 }
-
-#order input, #order button{
+#order input,#order button{
     width:100%;
     padding:12px;
     margin-bottom:15px;
     border:none;
     border-radius:10px;
 }
-
 #order button{
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
     font-weight:bold;
-    cursor:pointer;
 }
 </style>
 </head>
@@ -224,10 +211,15 @@ body{
 <!-- HEADER -->
 <div id="topHeader">
     <div id="author">by Roman Habib</div>
+
     <div id="menu">
         <span onclick="openPanel('contact')">Contacts</span>
         <span onclick="openPanel('support')">Support</span>
         <span onclick="openPanel('complaint')">Complaint</span>
+    </div>
+
+    <div id="hamburger" onclick="toggleMobileMenu()">
+        <div></div><div></div><div></div>
     </div>
 </div>
 
@@ -235,7 +227,6 @@ body{
 <div id="contact" class="panel">
     <div class="close" onclick="closePanels()">✕</div>
     <h3>Contacts</h3>
-    <p>Orders & information:</p>
     <p>📞 0300-5093328</p>
 </div>
 
@@ -243,20 +234,17 @@ body{
     <div class="close" onclick="closePanels()">✕</div>
     <h3>Support</h3>
     <p>
-        • Product choose karein<br>
-        • Order form fill karein<br>
-        • Submit karein<br>
-        • Team aapse contact karegi
+        Product select karein<br>
+        Order form fill karein<br>
+        Submit karein<br>
+        Team contact karegi
     </p>
 </div>
 
 <div id="complaint" class="panel">
     <div class="close" onclick="closePanels()">✕</div>
     <h3>Complaint</h3>
-    <p>
-        Kisi bhi issue ke liye:<br>
-        📞 0314-5383884
-    </p>
+    <p>📞 0314-5383884</p>
 </div>
 
 <!-- MAIN -->
@@ -282,13 +270,21 @@ body{
 </div>
 
 <script>
+let mobileIndex = 0;
+const mobileTabs = ["contact","support","complaint"];
+
+function toggleMobileMenu(){
+    openPanel(mobileTabs[mobileIndex]);
+    mobileIndex = (mobileIndex + 1) % mobileTabs.length;
+}
+
 function openPanel(id){
-    document.querySelectorAll('.panel').forEach(p=>p.style.display="none");
+    document.querySelectorAll(".panel").forEach(p=>p.style.display="none");
     document.getElementById(id).style.display="block";
 }
 
 function closePanels(){
-    document.querySelectorAll('.panel').forEach(p=>p.style.display="none");
+    document.querySelectorAll(".panel").forEach(p=>p.style.display="none");
 }
 </script>
 
