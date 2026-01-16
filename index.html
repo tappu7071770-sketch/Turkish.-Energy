@@ -17,6 +17,7 @@ body{
     min-height:100vh;
     color:white;
     overflow-x:hidden;
+    background:black;
 }
 
 /* ===== VIDEO BACKGROUND ===== */
@@ -26,24 +27,24 @@ body{
     width:100%;
     height:100%;
     object-fit:cover;
-    z-index:-2;
+    z-index:-3;
 }
 
 #overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,0.65);
-    z-index:-1;
+    z-index:-2;
 }
 
-/* ===== HEADER BAR ===== */
+/* ===== TOP HEADER ===== */
 #topHeader{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:12px 20px;
-    background:rgba(0,0,0,0.45);
-    backdrop-filter:blur(6px);
+    padding:12px 22px;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(8px);
 }
 
 #author{
@@ -51,55 +52,39 @@ body{
     letter-spacing:1px;
     color:#fff;
     font-weight:bold;
-    text-shadow:0 0 10px red;
-    animation: pulse 2.5s infinite;
+    animation: neonPulse 2s infinite alternate;
 }
 
-@keyframes pulse{
-    0%{opacity:.6}
-    50%{opacity:1}
-    100%{opacity:.6}
-}
-
-#menu{
-    display:flex;
-    gap:20px;
+@keyframes neonPulse{
+    from{text-shadow:0 0 6px red;}
+    to{text-shadow:0 0 16px red,0 0 30px orange;}
 }
 
 #menu span{
+    margin-left:18px;
     cursor:pointer;
     color:#00ffd5;
     font-size:14px;
 }
 
-/* ===== SLIDE PANELS ===== */
+/* ===== PANELS ===== */
 .panel{
     position:fixed;
-    top:65px;
+    top:70px;
     right:20px;
     width:300px;
-    background:rgba(0,0,0,0.85);
-    padding:18px;
-    border-radius:14px;
+    background:rgba(0,0,0,0.9);
+    padding:20px;
+    border-radius:16px;
     display:none;
-    z-index:10;
-    animation: slideFade .35s ease;
+    z-index:20;
+    animation: panelIn .4s ease;
+    box-shadow:0 0 25px red;
 }
 
-@keyframes slideFade{
-    from{opacity:0; transform:translateY(-10px)}
-    to{opacity:1; transform:translateY(0)}
-}
-
-.panel h3{
-    color:#ffaa00;
-    margin-bottom:8px;
-}
-
-.panel p{
-    font-size:14px;
-    line-height:1.5;
-    color:#ccc;
+@keyframes panelIn{
+    from{opacity:0; transform:translateY(-15px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
 .close{
@@ -108,34 +93,17 @@ body{
     font-size:18px;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width:768px){
-    .panel{
-        width:100%;
-        left:0;
-        right:0;
-        bottom:0;
-        top:auto;
-        border-radius:18px 18px 0 0;
-        animation: slideUp .35s ease;
-    }
-    @keyframes slideUp{
-        from{transform:translateY(100%)}
-        to{transform:translateY(0)}
-    }
-}
-
-/* ===== HEADER ===== */
+/* ===== MAIN HEADER ===== */
 #header{
     text-align:center;
-    padding:30px 15px;
+    padding:35px 15px;
 }
 
 #brand{
-    font-size:42px;
+    font-size:44px;
     letter-spacing:3px;
     color:#ff2a2a;
-    text-shadow:0 0 15px red;
+    text-shadow:0 0 20px red,0 0 40px orange;
 }
 
 #tagline{
@@ -150,8 +118,8 @@ body{
     flex-wrap:wrap;
     justify-content:center;
     align-items:center;
-    gap:40px;
-    padding:30px;
+    gap:50px;
+    padding:40px 20px;
 }
 
 /* ===== PRODUCT ===== */
@@ -162,79 +130,103 @@ body{
 
 #can{
     width:100%;
-    animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 30px orange);
+    animation: megaFloat 2.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 40px orange);
+    will-change: transform;
 }
 
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-18px);}
-    100%{transform:translateY(0);}
+@keyframes megaFloat{
+    0%{transform:translateY(0) rotate(-1deg);}
+    50%{transform:translateY(-25px) rotate(1deg);}
+    100%{transform:translateY(0) rotate(-1deg);}
 }
 
 #price{
-    margin-top:15px;
+    margin-top:18px;
     font-size:22px;
     color:#ffaa00;
-    text-shadow:0 0 10px orange;
+    text-shadow:0 0 15px orange;
 }
 
-/* ===== ORDER ===== */
+/* ===== ORDER FORM ===== */
 #order{
     width:300px;
-    background:rgba(0,0,0,0.6);
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 0 30px rgba(255,50,50,0.5);
-    animation: glowBox 2.5s infinite alternate;
+    background:rgba(0,0,0,0.65);
+    padding:26px;
+    border-radius:22px;
+    animation: boxBreath 2.2s infinite alternate;
+    border:2px solid rgba(255,60,60,0.6);
 }
 
-@keyframes glowBox{
-    from{box-shadow:0 0 15px rgba(255,80,80,0.4);}
-    to{box-shadow:0 0 35px rgba(255,80,80,0.8);}
+@keyframes boxBreath{
+    from{
+        box-shadow:0 0 20px rgba(255,50,50,0.4),
+                   inset 0 0 10px rgba(255,50,50,0.3);
+    }
+    to{
+        box-shadow:0 0 45px rgba(255,50,50,0.9),
+                   inset 0 0 20px rgba(255,120,50,0.6);
+    }
 }
 
-#order input, #order button{
+#order input{
     width:100%;
     padding:12px;
     margin-bottom:15px;
     border:none;
     border-radius:10px;
-    font-size:14px;
-}
-
-#order input{
     background:rgba(255,255,255,0.15);
     color:white;
+    outline:none;
 }
 
-#order input::placeholder{
-    color:#ccc;
+#order input:focus{
+    box-shadow:0 0 12px #00ffd5;
 }
 
 #order button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
     background:linear-gradient(135deg,#ff2a2a,#ff9900);
     font-weight:bold;
     cursor:pointer;
-    color:black;
-    transition:.3s;
+    animation: btnPulse 1.5s infinite alternate;
+}
+
+@keyframes btnPulse{
+    from{box-shadow:0 0 10px orange;}
+    to{box-shadow:0 0 25px orange;}
 }
 
 #order button:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 20px orange;
+    transform:scale(1.07);
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+    #main{gap:30px;}
+    .panel{
+        width:100%;
+        left:0;
+        right:0;
+        bottom:0;
+        top:auto;
+        border-radius:20px 20px 0 0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<video id="bgVideo" autoplay muted loop playsinline preload="auto">
+<video id="bgVideo" autoplay muted loop playsinline>
     <source src="1.mp4" type="video/mp4">
 </video>
 <div id="overlay"></div>
 
-<!-- TOP HEADER -->
+<!-- HEADER -->
 <div id="topHeader">
     <div id="author">by Roman Habib</div>
     <div id="menu">
@@ -253,20 +245,18 @@ body{
 
 <div id="support" class="panel">
     <div class="close" onclick="closePanels()">✕</div>
-    <h3>Support</h3>
-    <p>Order form fill karein aur submit karein. Team aapse contact karegi.</p>
+    <p>Order form fill karein aur submit karein. Team aapse rabta karegi.</p>
 </div>
 
 <div id="complaint" class="panel">
     <div class="close" onclick="closePanels()">✕</div>
-    <h3>Complaint</h3>
     <p>📞 0314-5383884</p>
 </div>
 
 <!-- MAIN -->
 <div id="header">
     <div id="brand">TURKISH ENERGY</div>
-    <div id="tagline">Fizzy Like Soda Storm⚡</div>
+    <div id="tagline">Fizzy Like Soda Storm ⚡</div>
 </div>
 
 <div id="main">
@@ -277,9 +267,9 @@ body{
 
     <div id="order">
         <form action="https://formsubmit.co/tappu707@gmail.com" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="text" name="phone" placeholder="Phone / WhatsApp" required>
-            <input type="number" name="qty" placeholder="Quantity" required>
+            <input type="text" placeholder="Your Name" required>
+            <input type="text" placeholder="Phone / WhatsApp" required>
+            <input type="number" placeholder="Quantity" required>
             <button type="submit">ORDER NOW</button>
         </form>
     </div>
